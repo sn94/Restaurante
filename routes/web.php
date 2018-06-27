@@ -33,3 +33,7 @@ Route::get('cities/{id}', 'TownController@cities');
 
 
 Route::get( 'sesion', 'StateController@verses');
+
+
+Route::get('city/jsoncreate', 'TownController@jsoncreate');
+Route::post('city/jsonstore', 'TownController@jsonstore');

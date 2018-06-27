@@ -9,7 +9,8 @@ $.ajax({
          
          $("#ciudades").empty();
          data.forEach( function(ele){
-             let btn= "<a class='btn btn-info fas fa-edit' href='/town/'"+ele.id+"/edit' ></a>";
+              
+             let btn= "<a class='btn btn-primary fas fa-edit' href='/town/"+ele.id+"/edit' ></a>"; 
               let fila= `<tr> <td>${ele.name}</td>   <td>${btn}</td></tr>`;
             $("#ciudades").append(fila); 
          }); 
@@ -25,7 +26,7 @@ $(document).ready(
             $("#departamento").on( 'change', function( evt){
                         
                let id= evt.target.value;
-                list_towns(   );
+               list_towns( id  );
             });
         }
         );

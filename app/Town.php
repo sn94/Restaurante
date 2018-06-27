@@ -11,6 +11,7 @@ class Town extends Model
     protected $connection= "mysql";
     
     
+    protected $fillable= ['name', 'state_id'];
     
     
     public function state(){

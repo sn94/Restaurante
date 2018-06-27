@@ -56,7 +56,7 @@
                                         <li><a href="{!!URL::to('/towns')!!}" class="sidebar-nav-link">Ciudades</a></li>
                                     </ul></li>
                            
-                            <li class="sidebar-nav-group"><a href="#forms" class="sidebar-nav-link" data-toggle="collapse"><i class="icon-pencil"></i> Movies</a>
+                            <li class="sidebar-nav-group"><a href="#forms" class="sidebar-nav-link" data-toggle="collapse"><i class="icon-pencil"></i> Men&uacute;</a>
                                         <ul id="forms" class="collapse" data-parent="#sidebar-nav">
                                             <li><a href="{!!URL::to('/pelicula')!!}" class="sidebar-nav-link">List</a></li>
                                             <li><a href="{!!URL::to('/pelicula/create')!!}" class="sidebar-nav-link">Create</a></li>

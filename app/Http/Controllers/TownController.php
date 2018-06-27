@@ -4,6 +4,9 @@ namespace Restaurant\Http\Controllers;
 
 use Restaurant\Town;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
+
 
 class TownController extends Controller
 {
@@ -29,7 +32,14 @@ class TownController extends Controller
     public function cities( $id ){
         $towns= Town::where('state_id', $id )->get(); 
         return response()->json( $towns);
+//        link_to_route('town.edit',
+//                '',
+//                [  $ite->id ] , 
+//                ['class'=>'btn btn-primary fas fa-edit'] 
     }
+    
+    
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -37,7 +47,8 @@ class TownController extends Controller
      */
     public function create()
     {
-        //
+       $states= \Restaurant\State::pluck('name', 'id');
+       return view('towns.create',  compact("states"));
     }
 
     /**
@@ -48,7 +59,18 @@ class TownController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if( $request['name'] ){
+            $names=  $request['name'];
+            
+            foreach($names as $it){
+                Town::create(  ['name'=> $it, 'state_id'=>$request->state_id]  );
+            }
+        Session::flash('mensaje', sizeof($request['name']) > 1 ? 'Ciudades registradas! ': 'Ciudad registrada!');
+        return redirect("/town/create"); 
+        }
+        
+       
+        return redirect("/town/create");  
     }
 
     /**
@@ -68,9 +90,14 @@ class TownController extends Controller
      * @param  \Restaurant\Town  $town
      * @return \Illuminate\Http\Response
      */
-    public function edit(Town $town)
+    public function edit($id)
     {
-        //
+       $states= \Restaurant\State::pluck('name', 'id');
+               
+       $town=  Town::find( $id );
+       if( $town){
+           return view('towns.edit',  ['town'=> $town,  'states'=> $states]   );
+       }
     }
 
     /**
@@ -80,9 +107,14 @@ class TownController extends Controller
      * @param  \Restaurant\Town  $town
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Town $town)
+    public function update(Request $request, $id)
     {
-        //
+        $town= Town::find( $id);
+        $town->fill(  $request->all() );
+        $town->save();
+        
+        Session::flash('mensaje', 'Descripcion cambiada!');
+        return redirect("/town/$id/edit");
     }
 
     /**
@@ -91,8 +123,27 @@ class TownController extends Controller
      * @param  \Restaurant\Town  $town
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Town $town)
+    public function destroy($id)
     {
-        //
+        Town::destroy($id);
+         Session::flash('mensaje', 'Descripcion eliminada!');
+        return redirect("/town/$id/edit");
+    }
+    
+    
+    public function jsoncreate(){
+        
+       $states= \Restaurant\State::pluck('name', 'id');
+        return view('towns.jsoncreate' , compact("states") );
+    }
+     public function jsonstore(Request $request){
+        $lista= json_decode( $request->name);
+        $state_id=  $request->state_id;
+        
+        foreach($lista as $ite){
+            Town::create( ['name'=>  $ite->name   , 'state_id'=>$state_id]);
+        }
+        Session::flash('mensaje', 'Ciudades registradas!');
+        return redirect("/city/jsoncreate");
     }
 }

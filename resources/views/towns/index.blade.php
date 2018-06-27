@@ -10,7 +10,9 @@
 <div class="row">
     
     <div class="col-12 col-md-4">  {!! Form::select('departamento', $states, null,   ['id'=>'departamento', 'class'=>'form-control mb-2' ]  )   !!}  </div>
-     <div class="col-12 offset-md-1 col-md-2"> {!! link_to('town/create', 'Crear', ['class'=> 'btn btn-info'] , null )!!}</div>
+     <div class="col-12 offset-md-1 col-md-3"> {!! link_to('town/create', 'Crear', ['class'=> 'btn btn-info'] , null )!!}</div>
+      <div class="col-12   col-md-4"> {!! link_to('city/jsoncreate', 'From JSON string', ['class'=> 'btn btn-info'] , null )!!}</div>
+
 </div>
   
  

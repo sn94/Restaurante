@@ -16,5 +16,9 @@
 {!!  Form::submit('Borrar', ['class'=> 'btn btn-danger']  ) !!}
 {!!   Form::close() !!}
 
+<br>
+{!! Form::open( ['route'=>[ 'state.destroy', $state->id], 'method'=>'delete']  ) !!}
+{!! Form::submit('Borrar', [ 'class'=> 'btn btn-danger' ] ) !!}
+{!!  Form::close() !!}
 
 @endsection
