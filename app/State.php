@@ -19,4 +19,7 @@ class State extends Model
     public function towns(){
         return $this->hasMany('Restaurant\Town');
     }
+    
+    
+    
 }

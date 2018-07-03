@@ -18,7 +18,7 @@ class TownController extends Controller
     public function index()
     {
        $states= \Restaurant\State::pluck( 'name', 'id');
-          
+       $towns= [];
        
        if( $states ){ 
          $towns= Town::where('state_id', "1" )->get();  

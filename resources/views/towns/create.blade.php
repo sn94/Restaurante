@@ -14,5 +14,5 @@
 @endsection
 
 @section('scripts')
-{!! Html::script('js/create_town.js') !!}
+{!! Html::script('js/towns/create_town.js') !!}
 @endsection

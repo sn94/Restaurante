@@ -44,6 +44,6 @@
 
 @section('scripts')
 
-{!! Html::script('js/list_town.js')  !!}
+{!! Html::script('js/towns/list_town.js')  !!}
 
 @endsection
