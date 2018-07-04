@@ -15,10 +15,16 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        $productos=  Producto::all();
-        return view('productos.index', compact('productos') );
+        $productos=  Producto::where('category_id','1')->get();
+        $categories= \Restaurant\Category::pluck('name', 'id');
+        return view('productos.index', [ 'productos'=> $productos, 'categories'=> $categories ] );
     }
 
+    
+    
+    public function lista( $catid){
+        return response()->json( Producto::where('category_id',$catid)->get()  );
+    }
     /**
      * Show the form for creating a new resource.
      *
@@ -64,7 +70,9 @@ class ProductoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $producto= Producto::find( $id) ;
+        $categories= \Restaurant\Category::pluck('name', 'id' );
+        return view('productos.edit' ,  [ 'producto'=> $producto , 'categories'=> $categories]);
     }
 
     /**
@@ -76,7 +84,11 @@ class ProductoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $producto= Producto::find( $id) ;
+        $producto->fill(  $request->all() );
+        $producto->save();
+         Session::flash( 'mensaje','Producto actualizado!');
+        return redirect('/producto');
     }
 
     /**

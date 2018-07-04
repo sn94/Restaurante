@@ -39,4 +39,7 @@ Route::get( 'subcategories/{id}',  'SubCategoryController@subcategories');
 
 
 Route::resource('producto', 'ProductoController');
+Route::get('productos/{cat_id}' , 'ProductoController@lista');
+
+
 

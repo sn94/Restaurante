@@ -29,8 +29,16 @@ class Producto extends Model
     
      
     public function setFotoAttribute($path_to_temp_file){
-        $path=    Storage::putFile('', new File( $path_to_temp_file )  );
-        $this->attributes['foto']=   $path;
+        if(  $path_to_temp_file ){
+                    $path=    Storage::putFile('', new File( $path_to_temp_file )  );
+                    $this->attributes['foto']=   $path;
+        }
+
+    }
+    
+    
+    public function category(){
+        return $this->belongsTo("Restaurant\Category");
     }
     
     //Storage::put      filename    filecontent
