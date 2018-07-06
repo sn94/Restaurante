@@ -67,10 +67,10 @@
                          
                                         
                                         
-                                            <li class="sidebar-nav-group"><a href="#input-controls" class="sidebar-nav-link" data-toggle="collapse"><i class="icon-note"></i> Input controls</a>
+                                            <li class="sidebar-nav-group"><a href="#input-controls" class="sidebar-nav-link" data-toggle="collapse"><i class="icon-note"></i> Sucursales</a>
                                                 <ul id="input-controls" class="collapse" data-parent="#sidebar-nav">
-                                                    <li><a href="./pages/input-controls/checkbox.html" class="sidebar-nav-link">Checkbox</a></li>
-                                                    <li><a href="{!!URL::to('/movie/create')!!}" class="sidebar-nav-link">Input date</a></li>
+                                                    <li><a href="/sucursal" class="sidebar-nav-link">Listar</a></li>
+                                                    <li><a href="/sucursal/create" class="sidebar-nav-link">Crear</a></li>
                                                     <li><a href="./pages/input-controls/input-group.html" class="sidebar-nav-link">Input group</a></li>
                                                     <li><a href="./pages/input-controls/input-suggestion.html" class="sidebar-nav-link">Input suggestion</a></li>
                                                     <li><a href="./pages/input-controls/label.html" class="sidebar-nav-link">Label</a></li>

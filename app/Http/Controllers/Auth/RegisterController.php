@@ -53,14 +53,15 @@ class RegisterController extends Controller
         $validatedData = $request->validate([
             'name'     => 'required|string|max:255',
             'username' => 'required|string|max:30',
-            'email'    => 'required|string|email|max:255|unique:users',
+            'email'    => 'required|string|email|max:255|unique:mysql.users',
             'password' => 'required|string|min:6|confirmed'
             
         ]); 
         try { 
             $validatedData['password']        = bcrypt(array_get($validatedData, 'password'));
             $validatedData['activation_code'] = str_random(30).time();
-            $user                             = app(User::class)->create($validatedData);
+            $user                             = User::create($validatedData);
+            //$user                             = app(User::class)->create($validatedData);
             
         } catch (\Exception $exception) {
             logger()->error($exception);
@@ -80,7 +81,7 @@ class RegisterController extends Controller
      * Get a validator for an incoming registration request.
      *
      * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * @return \Illuminate\Contracts\V  alidation\Validator
      */
     protected function validator(array $data)
     {

@@ -3,10 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/Restaurante/app/Http/Controllers/ProductoController.php</file>
-            <file>file:/C:/xampp/htdocs/Restaurante/config/filesystems.php</file>
-            <file>file:/C:/xampp/htdocs/Restaurante/app/Producto.php</file>
-            <file>file:/C:/xampp/htdocs/Restaurante/resources/views/productos/index.blade.php</file>
+            <file>file:/C:/xampp/htdocs/Restaurante/database/migrations/2018_07_03_210506_create_sucursals_table.php</file>
         </group>
     </open-files>
 </project-private>

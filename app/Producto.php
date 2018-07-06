@@ -21,7 +21,7 @@ class Producto extends Model
      
     public function getFotoAttribute($foto){
         
-        return 'storage/productos/'.$foto ;
+        return '/storage/productos/'.$foto ;
     }
     
     
