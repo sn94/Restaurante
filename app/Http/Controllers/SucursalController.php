@@ -3,6 +3,9 @@
 namespace Restaurant\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
+use Restaurant\Sucursal;
+
 
 class SucursalController extends Controller
 {
@@ -13,7 +16,8 @@ class SucursalController extends Controller
      */
     public function index()
     {
-       return "sucursals";
+        $sucursals= Sucursal::all();
+       return view('sucursals.index', compact('sucursals'));
     }
 
     /**
@@ -23,7 +27,7 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        //
+         return view('sucursals.create');
     }
 
     /**
@@ -34,7 +38,9 @@ class SucursalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Sucursal::create($request->all() );
+        Session::flash('mensaje', 'Sucursal agregada!');
+        return redirect('/sucursal');
     }
 
     /**
@@ -56,7 +62,8 @@ class SucursalController extends Controller
      */
     public function edit($id)
     {
-        //
+       $sucursal= Sucursal::find( $id );
+       return view('sucursals.edit', compact('sucursal'));
     }
 
     /**
@@ -68,7 +75,11 @@ class SucursalController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+    $sucur=Sucursal::find( $id);
+    $sucur->fill( $request->all() );
+    $sucur->save();
+     Session::flash('mensaje', 'Sucursal actualizada!');
+        return redirect('/sucursal');
     }
 
     /**
@@ -79,6 +90,8 @@ class SucursalController extends Controller
      */
     public function destroy($id)
     {
-        //
+         Sucursal::destroy($id);
+          Session::flash('mensaje', 'Sucursal eliminada!');
+        return redirect('/sucursal');
     }
 }

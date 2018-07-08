@@ -5,9 +5,9 @@ namespace Restaurant;
 use Illuminate\Database\Eloquent\Model;
 
 class Sucursal extends Model
-{
-    protected $table= "sucursales";
+{ 
+    protected $connection="mysql";
     
-    
+    protected $fillable=['name', 'address', 'cellphone', 'telephone' ];
     
 }
